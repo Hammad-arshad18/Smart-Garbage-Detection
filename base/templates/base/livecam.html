@@ -1,0 +1,45 @@
+{% extends 'base/Layout.html' %}
+{#Title#}
+{% block title %}Live Cameras{% endblock %}
+{#Body#}
+{% block body %}
+<section class="live-video">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Camera 1</h2>
+                <div class="video-portion">
+                    <video controls>
+                        <source src="video/">
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Camera 2</h2>
+                <div class="video-portion">
+                    <video controls>
+                        <source src="video/">
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Camera 3</h2>
+                <div class="video-portion">
+                    <video controls>
+                        <source src="video/">
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Camera 4</h2>
+                <div class="video-portion">
+                    <video controls>
+                        <source src="video/">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

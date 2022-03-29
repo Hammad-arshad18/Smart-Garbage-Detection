@@ -1,0 +1,23 @@
+{% extends 'base/Layout.html' %}
+{% load static %}
+{#Title#}
+{% block title %}Services{% endblock %}
+{#Body#}
+{% block body %}
+<section class="our-services">
+    <div class="container">
+        <h1>Our Services</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img src="{% static 'base/images/services1.jpg' %}" class="img-fluid" alt="Image">
+                <div class="services-details">
+                    <p>We'll provide live services to make city sustainable. Our Systems Detects Garbage Through cameras
+                        & generates a task alert to the employees that there's a need of cleaning in the city at the
+                        specific place. Cameras Fitting & giving you a startup setup is a part of our services. You'll
+                        be happy after getting our services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

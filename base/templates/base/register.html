@@ -1,0 +1,52 @@
+{% extends 'base/Layout2.html' %}
+
+{% block title %}Admin - Register{% endblock %}
+
+{% block body %}
+
+    <section class="main-body">
+        <div class="blackbg"></div>
+        <section class="register_screen">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-sm-9 col-md-5 col-lg-4 shadow-lg">
+                        <h1>register</h1>
+                        <p>Register as a new user</p>
+                        <form action="{% url 'Register' %}" class="needs-validation" method="post"
+                              enctype="multipart/form-data"
+                              novalidate>
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span class="input-group-text">@</span>
+                                <input type="text" class="form-control" placeholder="Username" name="uname" id="uname"
+                                       required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                                <input type="email" class="form-control" placeholder="Email" name="uemail" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                                <input type="password" class="form-control" placeholder="Password" name="upassword"
+                                       required>
+                            </div>
+{#                            <div class="input-group">#}
+{#                                <span class="input-group-text"><i class="fas fa-upload"></i></span>#}
+{#                                <input type="file" class="form-control" placeholder="Username" name="uimage"#}
+{#                                       accept="image/*" required>#}
+{#                            </div>#}
+                            <div class="sign-up-portion">
+                                <p>Already have an account ? <a href="{% url 'Index' %}">Login</a></p>
+                            </div>
+
+                            <div class="submit_btn">
+                                <button class="btn btn-success">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}
