@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 def Index(request):
     data = {}
     if request.user.is_authenticated:
+
         return redirect("Homepage")
     else:
         if request.method == "POST":
@@ -55,6 +56,7 @@ def Home(request):
             contact_form = Contact(name=name, email=email, comment=comment)
             contact_form.save()
         else:
+            messages.error(request, "All Fields Are Required. PLease Fill All The Fields")
             data = {'response': 'All Fields Are Required. PLease Fill All The Fields'}
 
     return render(request, "base/home.html", data)
@@ -78,3 +80,31 @@ def about(request):
 @login_required(login_url="/")
 def faq(request):
     return render(request, 'base/faq.html')
+
+
+@login_required(login_url="/")
+def Profile(request):
+    name = request.user.username
+    email = request.user.email
+    data = {
+        'name': name,
+        'email': email
+    }
+    return render(request, 'base/profile.html', data)
+
+
+@login_required(login_url="/")
+def UpdatePersonal(request):
+    userUpdate=User.objects.get(id=request.user.id)
+    print(userUpdate)
+    if request.method == 'POST':
+        name = request.POST.get('user_name')
+        email = request.POST.get('user_email')
+        if name != "" and email != "":
+            print(name)
+    return HttpResponse('404 Page Not Found')
+
+
+@login_required(login_url="/")
+def Dashboard(request):
+    return render(request,'base/dashboard.html')

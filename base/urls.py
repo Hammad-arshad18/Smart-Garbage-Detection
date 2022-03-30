@@ -9,5 +9,8 @@ urlpatterns = [
     path('about/', views.about, name="About"),
     path('faq/', views.faq, name="Faq"),
     path('register/',views.Register,name="Register"),
-    path('logout/',views.Logout,name="Logout")
+    path('logout/',views.Logout,name="Logout"),
+    path('profile/',views.Profile,name="Profile"),
+    path('updatePersonal/',views.UpdatePersonal,name="UpdatePersonal"),
+    path('dashboard/',views.Dashboard,name="Dashboard"),
 ]

@@ -1,0 +1,98 @@
+{% extends 'base/Layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <section class="profile-body">
+        <div class="container">
+            <!--Personal Details-->
+            <section class="personal-details">
+                <div class="personal-details-msg"></div>
+                <div class="row">
+                    <div class="col-md">
+                        <h4>Personal information</h4>
+                        <p>Update's your account profile information & email address</p>
+                    </div>
+                    <div class="col-md shadow-sm">
+                        <form action="{% url 'Profile' %}" method="post" class="form-group">
+                            <label class="form-text" for="user-name">Name</label>
+                            <input type="text" class="form-control" name="user_name" value="{{ name }}"
+                                   id="user-name"/>
+                            <label class="form-text" for="user-email">Email</label>
+                            <input type="email" class="form-control" name="user_email" value="{{ email }}"
+                                   id="user-email"/>
+                            <button class="btn btn-success" id="update-data" name="udata">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Update Password-->
+            <section class="update-pass">
+                <div id="update-alert"></div>
+                <div class="row">
+                    <div class="col-md">
+                        <h4>Update Password</h4>
+                        <p>Update's your account is a long random password to stay secure.</p>
+                    </div>
+                    <div class="col-md shadow-sm">
+                        <form action="{% url 'Profile' %}" method="post" class="form-group" id="pass-form">
+                            <label class="form-text" for="new-pass">New Password</label>
+                            <input type="password" class="form-control" id="new-pass"/>
+                            <label class="form-text" for="conf-pass">Confirm Password</label>
+                            <input type="password" class="form-control" id="conf-pass"/>
+                            <button id="pass_update" class="btn btn-success">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <hr>
+            {% if request.user.is_superuser %}
+                <!--Dashboard-->
+                <section class="delete-acc">
+                    <div class="row">
+                        <div class="col-md">
+                            <h4>Dashboard</h4>
+                            <p>You're An Admin.</p>
+                        </div>
+                        <div class="col-md shadow-sm">
+                            <form action="{% url 'Profile' %}" method="post" class="form-group">
+                                <p>Access The Dashboard & Do All The Major Operations For The Site. You Can Control
+                                    Everything There.</p>
+                                <div class="del-btn-acc text-end">
+                                    <a href="{% url 'Dashboard' %}" class="btn btn-outline-primary">Dashboard</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            {% else %}
+                <section class="delete-acc">
+                    <div class="row">
+                        <div class="col-md">
+                            <h4>Delete Account</h4>
+                            <p>Permanently delete your account</p>
+                        </div>
+                        <div class="col-md shadow-sm">
+                            <form action="{% url 'Profile' %}" method="post" class="form-group">
+                                <p>once your account is deleted, all of its recources and data will permaneltly deleted.
+                                    before deleting your account, please download any data or information that you wish
+                                    to
+                                    retain.</p>
+                                <div class="del-btn-acc text-end">
+                                    <button class="btn btn-danger" name="delete_acc">DELETE ACCOUNT</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+            <!--Delete Account-->
+
+        </div>
+        </div>
+    </section>
+
+
+{% endblock %}
