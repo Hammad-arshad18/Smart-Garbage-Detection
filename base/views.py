@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Contact
+from .models import Contact, Blog
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+import requests
 
 
 # Create your views here.
@@ -94,25 +95,29 @@ def Profile(request):
 
 
 @login_required(login_url="/")
-def UpdatePassword(request):
-    # newPass=request.POST.get('new-pass')
-    # confPass=request.POST.get('conf-pass')
-    # if newPass == confPass:
-    #     passUpdate=User.objects.get(username=request.user.username)
-    #     if passUpdate is not None:
-    #         passUpdate.set_password(newPass)
-    #         passUpdate.save()
-    #         messages.success(request, "Password Change Successfully")
-    #         return redirect("Profile")
-    #     else:
-    #         messages.error(request,"User Not Exist")
-    # else:
-    #     messages.error(request,"New Password Didn't Match With Confirm Password")
-    return HttpResponse('404 Page Not Found')
-
-
-@login_required(login_url="/")
 def Dashboard(request):
-    users=User.objects.all()
-    data={'users':users}
-    return render(request,'base/dashboard.html',data)
+    users = User.objects.all()
+    data = {'users': users}
+    return render(request, 'base/dashboard.html', data)
+
+
+@login_required(login_url='/')
+def BlogPost(request):
+    if request.method == "POST":
+        title = request.POST.get('blog_title')
+        postDetails = request.POST.get('blog_comment')
+        if title is not None and postDetails is not None:
+            blogPost = Blog(title=title, postDetails=postDetails)
+            blogPost.save()
+            messages.success(request, 'Successfully Posted')
+            return redirect('Dashboard')
+        else:
+            messages.error(request, 'All Fields Are Required !!')
+    return redirect('Dashboard')
+
+
+@login_required(login_url='/')
+def Blogs(request):
+    response=requests.get('http://127.0.0.1:8000/api/blogs/').json()
+    data={'blogs':response}
+    return render(request, 'base/blogs.html',data)

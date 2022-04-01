@@ -63,7 +63,7 @@
                 {% if response %}
                 <h5 class="text-center fw-bold text-danger">{{ response }}</h5>
                 {% endif %}
-                <form action="{% url 'Homepage' %}" id="contact-form" class="needs-validation" method="post" novalidate>
+                <form action="{% url 'Homepage' %}" id="contact-form"  method="post" >
                     {% csrf_token %}
                     <label class="form-text" for="c_name">Name</label>
                     <input placeholder="Name" class="form-control" name="c_name" id="c_name" type="text" required>

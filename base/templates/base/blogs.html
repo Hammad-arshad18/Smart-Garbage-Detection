@@ -1,0 +1,24 @@
+{% extends 'base/Layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <section class="blog-post">
+        <div class="container">
+            <h1 class="heading-blog">Blogs</h1>
+            <div class="row-cols-1 justify-content-center">
+                {% for blog in blogs %}
+                <div class="col-10 col-md-8 shadow-sm">
+                    <h1>{{ blog.title }}</h1>
+                    <h5>(Admin)</h5>
+                    <h6>Hammad Arshad</h6>
+                    <p>{{ blog.postDetails }}</p>
+                </div>
+                {% endfor %}
+                ?>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

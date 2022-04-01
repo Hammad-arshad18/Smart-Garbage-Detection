@@ -35,9 +35,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'LiveCameras' %}"><i class="bi bi-webcam-fill"></i> Live Cam</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="bi bi-info-circle"></i> Blog</a>
-                </li>
+
+                {% if request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'API' %}"><i class="fa fa-database"></i> API</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Blogs' %}"><i class="bi bi-info-circle"></i> Blog</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                     {% if user.is_authenticated %}
                         <a class="nav-link" id="navbarDropdown" role="button"
@@ -93,7 +100,8 @@
     </div>
 
     <div class="footer-canvas">
-        <p>&copy; Copyright 2021 - {% now 'Y' %}  <a target="_blank" href="https://github.com/Hammad-arshad18">@Hammad Arshad</a></p>
+        <p>&copy; Copyright 2021 - {% now 'Y' %} <a target="_blank" href="https://github.com/Hammad-arshad18">@Hammad
+            Arshad</a></p>
     </div>
 </div>
 {#Body#}
@@ -120,7 +128,9 @@
                         exist such a system that could help detect the whole accumulation of garbage.</p>
                 </div>
                 <div class="copyright-portion">
-                    <p>&copy; Copyright 2021 - {% now 'Y' %}  <a target="_blank" href="https://github.com/Hammad-arshad18">@Hammad Arshad</a></p>
+                    <p>&copy; Copyright 2021 - {% now 'Y' %} <a target="_blank"
+                                                                href="https://github.com/Hammad-arshad18">@Hammad
+                        Arshad</a></p>
                 </div>
             </div>
         </div>

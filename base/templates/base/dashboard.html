@@ -38,7 +38,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-10 col-lg-8">
                                     <h1>Blog Post</h1>
-                                    <form action="dashboard.php" class="needs-validation" novalidate method="post">
+                                    <form action="{% url 'BlogPost' %}" method="post">
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <label for="blog_title" class="form-text">Title</label>
                                             <input type="text" class="form-control" placeholder="Title"
