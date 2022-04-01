@@ -504,6 +504,14 @@
   letter-spacing: 1px;
 }
 
+.footer .row .col-md-8 .copyright-portion p a{
+  text-decoration: none;
+  color: white;
+}
+.footer .row .col-md-8 .copyright-portion p a:hover{
+  color: #34d479;
+}
+
 .history {
   padding: 10px 0;
 }

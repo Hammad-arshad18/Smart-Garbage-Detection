@@ -94,17 +94,25 @@ def Profile(request):
 
 
 @login_required(login_url="/")
-def UpdatePersonal(request):
-    userUpdate=User.objects.get(id=request.user.id)
-    print(userUpdate)
-    if request.method == 'POST':
-        name = request.POST.get('user_name')
-        email = request.POST.get('user_email')
-        if name != "" and email != "":
-            print(name)
+def UpdatePassword(request):
+    # newPass=request.POST.get('new-pass')
+    # confPass=request.POST.get('conf-pass')
+    # if newPass == confPass:
+    #     passUpdate=User.objects.get(username=request.user.username)
+    #     if passUpdate is not None:
+    #         passUpdate.set_password(newPass)
+    #         passUpdate.save()
+    #         messages.success(request, "Password Change Successfully")
+    #         return redirect("Profile")
+    #     else:
+    #         messages.error(request,"User Not Exist")
+    # else:
+    #     messages.error(request,"New Password Didn't Match With Confirm Password")
     return HttpResponse('404 Page Not Found')
 
 
 @login_required(login_url="/")
 def Dashboard(request):
-    return render(request,'base/dashboard.html')
+    users=User.objects.all()
+    data={'users':users}
+    return render(request,'base/dashboard.html',data)

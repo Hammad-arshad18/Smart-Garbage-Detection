@@ -85,16 +85,15 @@
                     <i class="far fa-user"></i> Profile
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">View Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Profile' %}">View Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 
     <div class="footer-canvas">
-        <p>&copy Copyright 2021 || <a href="">Hammad Arshad</a></p>
+        <p>&copy; Copyright 2021 - {% now 'Y' %}  <a target="_blank" href="https://github.com/Hammad-arshad18">@Hammad Arshad</a></p>
     </div>
 </div>
 {#Body#}
@@ -121,7 +120,7 @@
                         exist such a system that could help detect the whole accumulation of garbage.</p>
                 </div>
                 <div class="copyright-portion">
-                    <p>&copy; {% now 'Y' %} Copyright Hammad Arshad</p>
+                    <p>&copy; Copyright 2021 - {% now 'Y' %}  <a target="_blank" href="https://github.com/Hammad-arshad18">@Hammad Arshad</a></p>
                 </div>
             </div>
         </div>

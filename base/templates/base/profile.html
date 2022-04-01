@@ -14,15 +14,14 @@
                         <p>Update's your account profile information & email address</p>
                     </div>
                     <div class="col-md shadow-sm">
-                        <form action="{% url 'Profile' %}" method="post" class="form-group">
-                            <label class="form-text" for="user-name">Name</label>
-                            <input type="text" class="form-control" name="user_name" value="{{ name }}"
-                                   id="user-name"/>
-                            <label class="form-text" for="user-email">Email</label>
-                            <input type="email" class="form-control" name="user_email" value="{{ email }}"
-                                   id="user-email"/>
-                            <button class="btn btn-success" id="update-data" name="udata">Update</button>
-                        </form>
+
+                        <label class="form-text" for="user-name">Name</label>
+                        <input type="text" class="form-control text-uppercase" name="user_name" disabled
+                               value="{{ name }}"
+                               id="user-name"/>
+                        <label class="form-text" for="user-email">Email</label>
+                        <input type="email" class="form-control" name="user_email" disabled value="{{ email }}"
+                               id="user-email"/>
                     </div>
                 </div>
             </section>
@@ -37,7 +36,8 @@
                         <p>Update's your account is a long random password to stay secure.</p>
                     </div>
                     <div class="col-md shadow-sm">
-                        <form action="{% url 'Profile' %}" method="post" class="form-group" id="pass-form">
+                        <form action="{% url 'UpdatePassword' %}" method="post" class="form-group" id="pass-form">
+                            {% csrf_token %}
                             <label class="form-text" for="new-pass">New Password</label>
                             <input type="password" class="form-control" id="new-pass"/>
                             <label class="form-text" for="conf-pass">Confirm Password</label>
@@ -67,28 +67,7 @@
                         </div>
                     </div>
                 </section>
-            {% else %}
-                <section class="delete-acc">
-                    <div class="row">
-                        <div class="col-md">
-                            <h4>Delete Account</h4>
-                            <p>Permanently delete your account</p>
-                        </div>
-                        <div class="col-md shadow-sm">
-                            <form action="{% url 'Profile' %}" method="post" class="form-group">
-                                <p>once your account is deleted, all of its recources and data will permaneltly deleted.
-                                    before deleting your account, please download any data or information that you wish
-                                    to
-                                    retain.</p>
-                                <div class="del-btn-acc text-end">
-                                    <button class="btn btn-danger" name="delete_acc">DELETE ACCOUNT</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </section>
             {% endif %}
-            <!--Delete Account-->
 
         </div>
         </div>

@@ -11,6 +11,6 @@ urlpatterns = [
     path('register/',views.Register,name="Register"),
     path('logout/',views.Logout,name="Logout"),
     path('profile/',views.Profile,name="Profile"),
-    path('updatePersonal/',views.UpdatePersonal,name="UpdatePersonal"),
+    path('updatePassword/',views.UpdatePassword,name="UpdatePassword"),
     path('dashboard/',views.Dashboard,name="Dashboard"),
 ]
