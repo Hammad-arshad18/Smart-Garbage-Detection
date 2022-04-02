@@ -12,7 +12,6 @@ import requests
 def Index(request):
     data = {}
     if request.user.is_authenticated:
-
         return redirect("Homepage")
     else:
         if request.method == "POST":
@@ -118,6 +117,6 @@ def BlogPost(request):
 
 @login_required(login_url='/')
 def Blogs(request):
-    response=requests.get('http://127.0.0.1:8000/api/blogs/').json()
-    data={'blogs':response}
-    return render(request, 'base/blogs.html',data)
+    response = requests.get('http://127.0.0.1:8000/api/blogs/').json()
+    data = {'blogs': response}
+    return render(request, 'base/blogs.html', data)
